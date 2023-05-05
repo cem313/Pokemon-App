@@ -7,21 +7,17 @@ let baseUrl = "https://pokeapi.co/api/v2/pokemon";
 let page = 1;
 
 function returnQueryParameters(num) {
-  // return `?offset=${(num - 1) * 20}`;
-  let offsetNumber = (num - 1) * 20;
-  return "?offset=" + offsetNumber;
+  return `?offset=${(num - 1) * 20}`;
 }
 
 function getPokemon() {
   clearAllPokemonContainer();
 
-  // let url = baseUrl + returnQueryParameters(page);
-  let url = `${baseUrl} returnQueryParameters(page)`;
+  let url = baseUrl + returnQueryParameters(page);
   fetch(url)
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
-      // nextPage = data.next;
       for (let i = 0; i < data.results.length; i++) {
         let pokemon = data.results[i];
         addPokemontoUI(pokemon);
